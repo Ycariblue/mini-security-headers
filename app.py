@@ -83,14 +83,51 @@ with st.sidebar:
     if dark_mode:
         st.markdown("""
         <style>
+            /* Reset básico para garantir que o fundo pegue tudo */
             .stApp {
                 background-color: #0e1117;
-                color: #fafafa;
+                color: #ffffff;
             }
+            
+            /* Forçar a cor da Sidebar */
+            [data-testid="stSidebar"] {
+                background-color: #262730;
+                color: #ffffff;
+            }
+            
+            /* Corrigir textos dentro da Sidebar e no corpo principal */
+            [data-testid="stSidebar"] h1, [data-testid="stSidebar"] h2, [data-testid="stSidebar"] h3, 
+            [data-testid="stSidebar"] p, [data-testid="stSidebar"] label, [data-testid="stSidebar"] span, 
+            [data-testid="stSidebar"] div {
+                color: #ffffff !important;
+            }
+            
+            /* Inputs de Texto */
+            .stTextInput input {
+                background-color: #0e1117 !important;
+                color: #ffffff !important;
+                border-color: #4b4b4b !important;
+            }
+            
+            /* Checkboxes e Labels gerais */
+            .stCheckbox label, .stToggle p, label {
+                color: #ffffff !important;
+            }
+            
+            /* Títulos principais da página */
+            .main-title {
+                color: #ffffff !important;
+            }
+            .sub-title {
+                color: #d0d0d0 !important;
+            }
+            
+            /* KPIs (Cards) */
             .kpi-card {
-                background-color: #262730 !important;
-                color: #fafafa;
-                box-shadow: 0 4px 6px rgba(255,255,255,0.05);
+                background-color: #1a1c24 !important;
+                color: #fafafa !important;
+                border: 1px solid #444;
+                box-shadow: none;
             }
             .kpi-title {
                 color: #bdc3c7 !important;
@@ -101,22 +138,16 @@ with st.sidebar:
             .kpi-desc {
                 color: #9ca0a6 !important;
             }
-            .main-title {
+            
+            /* Tabelas e Expander */
+            .stExpander {
+                background-color: #262730;
+                color: #ffffff;
+            }
+            
+            /* Ajuste Global de Textos (H1-H6, P) */
+            h1, h2, h3, h4, h5, h6, p, li {
                 color: #ffffff !important;
-            }
-            .sub-title {
-                color: #d0d0d0 !important;
-            }
-            /* Ajustes gerais de texto para garantir legibilidade no dark mode */
-            h1, h2, h3, h4, h5, h6, p, li, span {
-                color: #fafafa !important;
-            }
-            /* Exceções para textos que precisam de cor específica (como alertas) */
-            .status-baixo, .status-medio, .status-alto {
-                /* As cores de status já são legíveis no escuro geralmente, mas podemos ajustar se precisar */
-            }
-            .stTextInput label, .stCheckbox label {
-                color: #fafafa !important;
             }
         </style>
         """, unsafe_allow_html=True)
