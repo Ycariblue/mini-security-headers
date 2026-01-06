@@ -174,6 +174,21 @@ with st.sidebar:
             /* Forçar links a terem cor visível */
             a { color: #4da6ff !important; }
             
+            /* --- HEADER DO STREAMLIT (Remover faixa branca) --- */
+            header[data-testid="stHeader"] {
+                background-color: transparent !important;
+            }
+            
+            /* Ajuste crítico para BOTÕES ficarem visíveis */
+            .stButton > button {
+                color: #000000 !important; /* Texto preto */
+                background-color: #fafafa !important; /* Fundo branco */
+                border: 1px solid #ccc !important;
+            }
+            .stButton > button:hover {
+                 background-color: #e6e6e6 !important;
+            }
+            
         </style>
         """, unsafe_allow_html=True)
 
