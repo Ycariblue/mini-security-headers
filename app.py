@@ -179,15 +179,25 @@ with st.sidebar:
                 background-color: transparent !important;
             }
             
-            /* Ajuste crítico para BOTÕES ficarem visíveis */
-            .stButton > button {
-                color: #000000 !important; /* Texto preto */
-                background-color: #fafafa !important; /* Fundo branco */
+            /* Ajuste crítico para BOTÕES ficarem visíveis (incluindo Download) */
+            .stButton > button, .stDownloadButton > button {
+                color: #000000 !important;
+                background-color: #fafafa !important;
                 border: 1px solid #ccc !important;
             }
-            .stButton > button:hover {
-                 background-color: #e6e6e6 !important;
+            
+            /* Forçar explicitamente a cor do TEXTO dentro do botão (p, div, span) */
+            .stButton > button *, .stDownloadButton > button * {
+                color: #000000 !important;
             }
+            
+            .stButton > button:hover, .stDownloadButton > button:hover {
+                 background-color: #e6e6e6 !important;
+                 border-color: #adadad !important;
+            }
+             .stButton > button:hover *, .stDownloadButton > button:hover * {
+                color: #000000 !important;
+             }
             
         </style>
         """, unsafe_allow_html=True)
