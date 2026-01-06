@@ -83,72 +83,97 @@ with st.sidebar:
     if dark_mode:
         st.markdown("""
         <style>
-            /* Reset básico para garantir que o fundo pegue tudo */
+            /* --- VARIAVEIS GLOBAIS DARK --- */
+            :root {
+                --background-primary: #0e1117;
+                --background-secondary: #262730;
+                --text-primary: #fafafa;
+                --text-secondary: #bdc3c7;
+                --accent-color: #ff4b4b; /* Cor padrão do Streamlit ou azul se preferir */
+            }
+            
+            /* Fundo Geral */
             .stApp {
-                background-color: #0e1117;
-                color: #ffffff;
+                background-color: var(--background-primary);
+                color: var(--text-primary);
             }
             
-            /* Forçar a cor da Sidebar */
+            /* --- SIDEBAR --- */
             [data-testid="stSidebar"] {
-                background-color: #262730;
-                color: #ffffff;
+                background-color: var(--background-secondary);
+                border-right: 1px solid #333;
             }
             
-            /* Corrigir textos dentro da Sidebar e no corpo principal */
+            /* Textos na Sidebar */
             [data-testid="stSidebar"] h1, [data-testid="stSidebar"] h2, [data-testid="stSidebar"] h3, 
-            [data-testid="stSidebar"] p, [data-testid="stSidebar"] label, [data-testid="stSidebar"] span, 
-            [data-testid="stSidebar"] div {
-                color: #ffffff !important;
+            [data-testid="stSidebar"] p, [data-testid="stSidebar"] label, [data-testid="stSidebar"] .stMarkdown {
+                color: var(--text-primary) !important;
             }
             
-            /* Inputs de Texto */
-            .stTextInput input {
-                background-color: #0e1117 !important;
-                color: #ffffff !important;
-                border-color: #4b4b4b !important;
-            }
-            
-            /* Checkboxes e Labels gerais */
-            .stCheckbox label, .stToggle p, label {
-                color: #ffffff !important;
-            }
-            
-            /* Títulos principais da página */
-            .main-title {
-                color: #ffffff !important;
-            }
-            .sub-title {
-                color: #d0d0d0 !important;
-            }
-            
-            /* KPIs (Cards) */
-            .kpi-card {
+            /* --- INPUTS (Text Input, Number Input, etc) --- */
+            /* Fundo do input e cor do texto digitado */
+            .stTextInput input, .stSelectbox div[data-baseweb="select"] > div {
                 background-color: #1a1c24 !important;
-                color: #fafafa !important;
+                color: white !important;
+                border: 1px solid #4a4a4a !important;
+            }
+            /* Label dos inputs */
+            .stTextInput label {
+                color: var(--text-secondary) !important;
+            }
+            
+            /* --- BOTÕES --- */
+            /* Botão Secundário (o padrão) */
+            .stButton button {
+                background-color: #ffffff !important;
+                color: #262730 !important;
+                border: none !important;
+                font-weight: bold !important;
+                transition: all 0.3s ease;
+            }
+            .stButton button:hover {
+                background-color: #e0e0e0 !important;
+                transform: scale(1.02);
+            }
+            /* Botão Primário (se houver/configurado) */
+            button[kind="primary"] {
+                background-color: #ff4b4b !important;
+                color: white !important;
+            }
+            
+            /* --- CHECKBOX & TOGGLE --- */
+            .stCheckbox label, .stToggle label, .stToggle p {
+                color: var(--text-primary) !important;
+            }
+            
+            /* --- CARDS KPI (Customizados) --- */
+            .kpi-card {
+                background-color: var(--background-secondary) !important;
+                color: var(--text-primary) !important;
                 border: 1px solid #444;
-                box-shadow: none;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.3);
             }
-            .kpi-title {
-                color: #bdc3c7 !important;
-            }
-            .kpi-value {
-                color: #fafafa !important;
-            }
-            .kpi-desc {
-                color: #9ca0a6 !important;
-            }
+            .kpi-title { color: #bdc3c7 !important; }
+            .kpi-value { color: white !important; }
+            .kpi-desc { color: #888 !important; }
             
-            /* Tabelas e Expander */
+            /* --- TABELAS E EXPANDERS --- */
             .stExpander {
-                background-color: #262730;
-                color: #ffffff;
+                background-color: var(--background-secondary) !important;
+                color: var(--text-primary) !important;
+                border: 1px solid #444;
+            }
+            .stExpander p, .stExpander li {
+                color: var(--text-primary) !important;
             }
             
-            /* Ajuste Global de Textos (H1-H6, P) */
-            h1, h2, h3, h4, h5, h6, p, li {
-                color: #ffffff !important;
-            }
+            /* --- TITULOS PRINCIPAIS --- */
+            .main-title { color: white !important; }
+            .sub-title { color: #bdc3c7 !important; }
+            
+            /* Forçar links a terem cor visível */
+            a { color: #4da6ff !important; }
+            
         </style>
         """, unsafe_allow_html=True)
 
